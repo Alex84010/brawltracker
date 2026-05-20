@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BS Trophy Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <div class="header-glow"></div>
+    <div class="header-content">
+      <span class="trophy-icon">🏆</span>
+      <div class="header-text">
+        <h1>TROPHY TRACKER</h1>
+        <p class="header-sub">Brawl Stars · Rush 30 Jours</p>
+      </div>
+      <span class="trophy-icon">🏆</span>
+    </div>
+  </header>
+
+  <!-- ===== SECTION : TROPHÉES DE DÉPART ===== -->
+  <section class="card setup-card" id="setupSection">
+    <h2 class="card-title">
+      <span class="icon">⚙️</span> Configuration du Mois
+    </h2>
+
+    <div class="input-group">
+      <label for="startTrophies">Trophées de départ (J0)</label>
+      <input
+        type="number"
+        id="startTrophies"
+        placeholder="Ex : 20000"
+        min="0"
+        inputmode="numeric"
+      />
+    </div>
+
+    <button class="btn btn-primary" id="saveStartBtn">
+      <span>✅ Valider le départ</span>
+    </button>
+
+    <!-- Résumé affiché une fois validé -->
+    <div class="start-summary hidden" id="startSummary">
+      <span class="label">Départ :</span>
+      <span class="value" id="startSummaryValue">—</span>
+      <span class="label">Objectif :</span>
+      <span class="value goal-value" id="goalSummaryValue">—</span>
+      <button class="btn btn-ghost btn-sm" id="editStartBtn">✏️ Modifier</button>
+    </div>
+  </section>
+
+  <!-- ===== SECTION : PROGRESSION GLOBALE ===== -->
+  <section class="card progress-card" id="progressSection">
+    <h2 class="card-title">
+      <span class="icon">📊</span> Progression Globale
+    </h2>
+    <div class="progress-grid">
+      <div class="stat-box">
+        <span class="stat-label">Jours complétés</span>
+        <span class="stat-value" id="statDaysCompleted">0 / 30</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Gain total</span>
+        <span class="stat-value" id="statTotalGain">+0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Moyenne / jour</span>
+        <span class="stat-value" id="statAvgPerDay">—</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Trophées actuels</span>
+        <span class="stat-value" id="statCurrentTrophies">—</span>
+      </div>
+    </div>
+    <!-- Barre de progression -->
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+      </div>
+      <span class="progress-bar-label" id="progressBarLabel">0%</span>
+    </div>
+  </section>
+
+  <!-- ===== SECTION : CALENDRIER DES 30 JOURS ===== -->
+  <section class="card calendar-card">
+    <h2 class="card-title">
+      <span class="icon">📅</span> Calendrier des 30 Jours
+    </h2>
+    <div class="calendar-list" id="calendarList">
+      <!-- Les 30 jours sont générés dynamiquement par JS -->
+    </div>
+  </section>
+
+  <!-- ===== SECTION : BILAN DE FIN DE MOIS ===== -->
+  <section class="card bilan-card hidden" id="bilanSection">
+    <h2 class="card-title">
+      <span class="icon">🏁</span> Bilan de Fin de Mois
+    </h2>
+    <div class="bilan-body" id="bilanBody">
+      <!-- Contenu généré dynamiquement -->
+    </div>
+  </section>
+
+  <!-- ===== BOUTON RESET ===== -->
+  <div class="reset-zone">
+    <button class="btn btn-danger" id="resetBtn">
+      🔄 Réinitialiser le mois
+    </button>
+    <p class="reset-warning">⚠️ Cette action effacera toutes tes données.</p>
+  </div>
+
+  <!-- ===== MODAL DE CONFIRMATION RESET ===== -->
+  <div class="modal-overlay hidden" id="resetModal">
+    <div class="modal-box">
+      <p class="modal-title">🗑️ Tout réinitialiser ?</p>
+      <p class="modal-text">Toutes tes données du mois seront perdues définitivement.</p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="cancelResetBtn">Annuler</button>
+        <button class="btn btn-danger" id="confirmResetBtn">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST NOTIFICATION ===== -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
